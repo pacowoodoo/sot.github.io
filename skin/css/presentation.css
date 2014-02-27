@@ -8,9 +8,49 @@ and open the template in the editor.
     Author     : paco
 */
 
-body{font-family: "Open Sans", Georgia; color:#444;}
-
-
-
-
+body{font-family: "Open Sans", Georgia; color:#444;margin: 0px;padding: 0px;}
 .screenblock{height:400px;padding:200px 0px; text-align: center;}
+#block1{background: url("../images/castelloppisfuocata.jpg") top left no-repeat transparent;}
+#block1{background: url("../images/castelloppinitida.jpg") top left no-repeat transparent;background-size: cover;}
+
+#block1 {padding-top: 200px;height: 800px;margin:0px 0px -600px;overflow: hidden;}
+#parallax-block1 {position: relative;left:0px;background-color: #fff;
+    opacity: 0.8;-moz-opacity: 0.8;filter: alpha(opacity=8.0);
+    overflow: hidden;width: 900px; margin-top: 300px;width:100%;}
+
+
+#parallax-it-right {
+position: relative;
+font-size: 160px;
+left: 80px;
+color: #C5C3DE;
+opacity: 0.25;
+-moz-opacity: 0.25;
+filter: alpha(opacity=2.5);
+overflow: hidden;
+width: 900px;
+}
+
+#parallax-it-left {
+position: relative;
+font-size: 120px;
+left: -160px;
+color: #C5C3DE;
+opacity: 0.5;
+-moz-opacity: 0.5;
+filter: alpha(opacity=5);
+overflow: hidden;
+}
+
+#parallax-it {
+padding: 0;
+font-size: 80px;
+position: relative;
+}
+
+#examples-parallax {
+padding-top: 200px;
+height: 800px;
+margin-bottom: -600px;
+overflow: hidden;
+}
