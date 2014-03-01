@@ -5,27 +5,17 @@
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width">
         <link rel="author" href="https://plus.google.com/113412762172857898460"/>
-        <link rel="stylesheet" href="skin/css/presentation.css" type="text/css">
-        <link rel="stylesheet" href="skin/css/onepage-scroll.css" type="text/css">
+        <link rel="stylesheet" href="skin/css/parallax.css" type="text/css">
 
         <script type="text/javascript" src="skin/js/greensock/TweenMax.min.js"></script>
         <script type="text/javascript" src="skin/js/jquery-1.9.1.min.js"></script>
 
         <script type="text/javascript" src="skin/js/jquery.superscrollorama.js"></script>
         <script type="text/javascript" src="skin/js/jquery.onepage-scroll.js"></script>
-
+        <!--script type="text/javascript" src="skin/js/modernizr.js"></script-->
         <link href='http://fonts.googleapis.com/css?family=Open+Sans:400italic,400,600,700' rel='stylesheet' type='text/css'>
         <script type="text/javascript">
             $(document).ready(function() {
-                
-                //attivo lo scrolling figo
-                $(".main").onepage_scroll({
-                    sectionContainer: "section", 
-                    easing: "ease",
-                    animationTime: 1000,
-                    pagination: true,
-                    updateURL: false
-                 });
                 
                 // This example adds a duration to the tweens so they are synced to the scroll position
 
@@ -71,7 +61,7 @@
 
     </head>
     <body>        
-        <div id="main" class="main onepage-wrapper">
+        <div id="main">
             <section id="block0"  class="screenblock page1">
                 <div id="title">
                     <h1>Sun Of Tuscany</h1>
