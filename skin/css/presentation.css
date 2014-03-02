@@ -36,6 +36,7 @@ a{}
 #block3{background: url("../images/terzaslide.jpg") 0px -100px no-repeat transparent;
         background-size: cover;overflow: hidden; }
 #fly-it{top: 200px;}
+#ending-parallax{margin:200px 0px 400px;}
 
 
 
