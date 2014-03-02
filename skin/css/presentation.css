@@ -12,11 +12,14 @@ body{font-family: "Open Sans", Georgia; color:#444;margin: 0px;padding: 0px;}
 h1,h2,h3,h4{font-family: Engagement, "Open Sans", Georgia;text-align: center;}
 h1{font-size: 120px;font-weight: 400;}
 h2{font-size: 76px;font-weight: 400;margin: 20px 0px 40px;}
-
+a{}
 .h1line{width: 800px;margin: auto;margin-top: 300px;}
 .h1line div{border-top: 3px solid #fff;width: 125px; float:left;}
 .h1line h1{float:left;margin-top: -90px;width: 550px;text-align: center;color: #FCEC3A;}
 .screenblock{ height: 800px; padding:0px 0px 0px; }
+
+#topmenu{position:fixed; top:0px;left:0px;}
+#topmenu a{font-weight: bold; color:#DB6F02;padding:0px 5px;font-size: 24px;}
 
 .content-block{background-color: #fff;top: 200px;
     opacity: 0.8;-moz-opacity: 0.8;filter: alpha(opacity=8.0);padding: 20px 40px 40px;
