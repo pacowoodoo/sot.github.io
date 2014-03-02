@@ -9,23 +9,36 @@ and open the template in the editor.
 */
 
 body{font-family: "Open Sans", Georgia; color:#444;margin: 0px;padding: 0px;}
-h1{font-size: 48px;}
+h1,h2,h3,h4{font-family: Engagement, "Open Sans", Georgia;text-align: center;}
+h1{font-size: 120px;font-weight: 400;}
+h2{font-size: 76px;font-weight: 400;margin: 20px 0px 40px;}
 
-.screenblock{ height: 800px; padding:0px 0px 0px; text-align: center;}
-#block0{background: url("../images/vallecasentino.jpg") 0px -150px no-repeat transparent;
-        background-size: cover; color:#f6f6c3; overflow: auto;}
-#block0 h1{margin-top: 200px;}
+.h1line{width: 800px;margin: auto;margin-top: 300px;}
+.h1line div{border-top: 3px solid #fff;width: 125px; float:left;}
+.h1line h1{float:left;margin-top: -90px;width: 550px;text-align: center;color: #FCEC3A;}
+.screenblock{ height: 800px; padding:0px 0px 0px; }
 
+.content-block{background-color: #fff;top: 200px;
+    opacity: 0.8;-moz-opacity: 0.8;filter: alpha(opacity=8.0);padding: 20px 40px 40px;
+    overflow: hidden; /* margin-top: 200px; */width:100%;font-size: 24px;}
+
+#block0{background: url("../images/primaslide.jpg") 0px -300px no-repeat transparent;
+        background-size: cover; color:#f6f6c3; overflow: hidden;}
 #block1{background: url("../images/castelloppinitida.jpg") 0px -150px no-repeat transparent;
         background-size: cover;padding-top: 0;margin:0px 0px 0px;overflow: hidden;}
-#parallax-block1 {position: relative;left:0px;background-color: #fff;top:200px;
-    opacity: 0.6;-moz-opacity: 0.6;filter: alpha(opacity=6.0);padding: 20px 40px 40px;
-    overflow: hidden; margin-top: 200px;width:100%;font-size:24px;}
-
+#parallax-block1 {position: relative;left:0px;}
 #block2{background: url("../images/pieveromena.jpg") top left no-repeat transparent;
-        background-size: cover;overflow: auto;}
+        background-size: cover;overflow: hidden;}
 #block2 div{margin-top: 200px;}
+#block3{background: url("../images/terzaslide.jpg") 0px -100px no-repeat transparent;
+        background-size: cover;overflow: hidden; }
+#fly-it{top: 200px;}
 
+
+
+
+
+/*blocco di esempio*/
 #parallax-it-right {
 position: relative;
 font-size: 160px;
