@@ -3,25 +3,27 @@
     <head>
         <title>Sun of Tuscany - Presentazione</title>
         <meta charset="UTF-8">
-        <meta name="viewport" content="width=device-width">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
         <link rel="author" href="https://plus.google.com/113412762172857898460"/>
-        <link rel="stylesheet" href="skin/css/presentation.css" type="text/css">
+        <link rel="stylesheet" href="skin/css/bootstrap.min.css" type="text/css">
+        <link rel="stylesheet" href="skin/css/bootstrap-theme.min.css" type="text/css">
+        <link rel="stylesheet" href="skin/css/presentationbootstrap.css" type="text/css">
 
         <script type="text/javascript" src="skin/js/greensock/TweenMax.min.js"></script>
         <script type="text/javascript" src="skin/js/jquery-1.9.1.min.js"></script>
         <script type="text/javascript" src="skin/js/jquery-ui-1.9.2.custom.min.js"></script>
-
+        <script type="text/javascript" src="skin/js/bootstrap.min.js"></script>
         <script type="text/javascript" src="skin/js/jquery.superscrollorama.js"></script>
 
         <link href='http://fonts.googleapis.com/css?family=Engagement|Open+Sans:400italic,400,600,700' rel='stylesheet' type='text/css'>
         <script type="text/javascript">
             var $windowHeight = 800;
-            
+
             $(document).ready(function() {
 
                 $windowHeight = $(window).height(); // returns height of HTML document
-                alert("altezza finestra"+$windowHeight);
-                
+                //alert("altezza finestra"+$windowHeight);
+
                 $(".screenblock").height($windowHeight);
 
                 // This example adds a duration to the tweens so they are synced to the scroll position
@@ -36,56 +38,73 @@
                 controller.addTween('#spin-it', TweenMax.from($('#spin-it'), .25, {css: {opacity: 0, rotation: 720}, ease: Quad.easeOut}), scrollDuration);
                 controller.addTween('#smush-it', TweenMax.fromTo($('#smush-it'), .25, {css: {opacity: 0, 'letter-spacing': '30px'}, immediateRender: true, ease: Quad.easeInOut}, {css: {opacity: 1, 'letter-spacing': '-10px'}, ease: Quad.easeInOut}), scrollDuration); // 100 px offset for better timing
                 controller.addTween(
-                    '#block1',
-                    (new TimelineLite())
-                    .append([
-                        TweenMax.fromTo($('#parallax-block1'), 1,
-                                {css: {top: 400}, immediateRender: true},
-                        {css: {top: 100}})
-                    ]),
-                    1000 // scroll duration of tween
-                );
-                
+                        '#block1',
+                        (new TimelineLite())
+                        .append([
+                            TweenMax.fromTo($('#parallax-block1'), 1,
+                                    {css: {top: 400}, immediateRender: true},
+                            {css: {top: 100}})
+                        ]),
+                        1000 // scroll duration of tween
+                        );
+
                 // parallax example
                 controller.addTween(
-                    '#ending-parallax',
-                    (new TimelineLite())
-                    .append([
-                        TweenMax.fromTo($('#parallax-it-left'), 1,
-                                {css: {top: 200}, immediateRender: true},
-                        {css: {top: -600}}),
-                        TweenMax.fromTo($('#parallax-it-right'), 1,
-                                {css: {top: 500}, immediateRender: true},
-                        {css: {top: -1250}})
-                    ]),
-                    1000 // scroll duration of tween
-                );
+                        '#ending-parallax',
+                        (new TimelineLite())
+                        .append([
+                            TweenMax.fromTo($('#parallax-it-left'), 1,
+                                    {css: {top: 200}, immediateRender: true},
+                            {css: {top: -600}}),
+                            TweenMax.fromTo($('#parallax-it-right'), 1,
+                                    {css: {top: 500}, immediateRender: true},
+                            {css: {top: -1250}})
+                        ]),
+                        1000 // scroll duration of tween
+                        );
             });
 
-            function scrollToPage(pageNumber) {
+            function scrollToPage(pageNumber, elem) {
+                $(".navbar-nav li").removeClass("active");
                 $('body').animate({scrollTop: pageNumber * $windowHeight}, 700, 'swing', function() {
                 });
+                $(elem).parent("li").addClass("active");
             }
 
         </script>
 
     </head>
-    <body>     
-        <div id="topmenu">
-            <a href="javascript:void(0)" onclick="scrollToPage(0)">pagina 1</a>
-            <a href="javascript:void(0)" onclick="scrollToPage(1)">pagina 2</a>
-            <a href="javascript:void(0)" onclick="scrollToPage(2)">pagina 3</a>
-            <a href="javascript:void(0)" onclick="scrollToPage(3)">pagina 4</a>
-        </div>
-        <div id="main" class="main onepage-wrapper">
-            <section id="block0"  class="screenblock page1">
-                <div id="title">
-                    <div class="h1line">
-                        <div class="h1lineleft"></div>
-                        <h1>Sun of Tuscany</h1>
-                        <div class="h1lineright"></div>
-                    </div>
+    <body>   
+        <div class="navbar navbar-inverse navbar-fixed-top" role="navigation">
+            <div class="container">
+                <div class="navbar-header">
+                    <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+                        <span class="sr-only">Toggle navigation</span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                    </button>
+                    <a class="navbar-brand" href="javascript:void(0)"  onclick="scrollToPage(0)">Sun of Tuscany</a>
                 </div>
+                <div class="collapse navbar-collapse">
+                    <ul class="nav navbar-nav">
+                        <li class="active"><a href="javascript:void(0)"  onclick="scrollToPage(0, this)">Home</a></li>
+                        <li><a href="javascript:void(0)" onclick="scrollToPage(1, this)">Pag 1</a></li>
+                        <li><a href="javascript:void(0)" onclick="scrollToPage(2, this)">Pag 2</a></li>
+                        <li><a href="javascript:void(0)" onclick="scrollToPage(3, this)">Pag 3</a></li>
+                    </ul>
+                </div><!--/.nav-collapse -->
+            </div>
+        </div>
+
+
+        <div id="main" class="main onepage-wrapper">
+            <section id="block0"  class="container-fluid page1">
+                <div class="col-xs-0 col-sm-2 col-m-2"></div>
+                <div class="h1line col-xs-3 col-sm-2 col-m-2"></div>
+                <div class="col-xs-6 col-sm-4 col-m-4"><h1>Sun of Tuscany</h1></div>
+                <div class="h1line col-xs-3 col-sm-2 col-m-2"></div>
+                <div class="col-xs-0 col-sm-2 col-m-2"></div>
             </section>
 
             <section id="block1"  class="screenblock page2">
@@ -121,7 +140,7 @@
                 </div>
             </section>
 
-          
+
             <section id="ending-parallax" >
                 <h2 id="parallax-it">Insieme è possibile</h2>
                 <h2 id="parallax-it-left">Insieme è possibile</h2>
