@@ -13,43 +13,50 @@ h1,h2,h3,h4{font-family: Engagement, "Open Sans", Georgia;text-align: center;}
 h1{font-size: 115px;font-weight: 400;}
 h2{font-size: 76px;font-weight: 400;margin: 20px 0px 40px;}
 a{}
-.h1line{/* width: 800px; */margin: auto;margin-top: 300px;}
+#content0{margin-top: 12%;}
+.h1line{margin-top: 300px;}
 .h1line{border-top: 3px solid #fff;/* width: 125px; */ margin-top: 86px;}
 #block0 h1{/* width: 550px; */text-align: center;color: #FCEC3A;}
 
 .main{padding: 51px 0px;}
 
 .content-block{background-color: #fff;top: 200px;
-    opacity: 0.8;-moz-opacity: 0.8;filter: alpha(opacity=8.0);padding: 20px 40px 40px;
+    /* opacity: 0.8; */-moz-opacity: 0.8;filter: alpha(opacity=8.0);padding: 20px 40px 40px;
     overflow: hidden; /* margin-top: 200px; */width:100%;font-size: 24px;position: relative;}
 
 /*sfondi*/
-#backgrounds{position: absolute;}
+#backgrounds{position: absolute;z-index: -10;}
 #backgrounds .backslide{width: 100%;}
 #backgrounds .back-container{overflow: hidden;text-align: center;}
 .backslide{}
+.godown{color: #666;  opacity: 0.8;
+    -moz-opacity: 0.8;filter: alpha(opacity=8.0);font-size: 36px;font-weight: 400;
+    background: #fff;height: 55px;width: 55px;padding: 13px 8px;margin: 60px auto;display: block;}
+.godown:hover{text-decoration: none;}
 
 /*Bloocchi verticali*/
-.screenblock{height: 200px;overflow: hidden;} /*utilizzato per sm*/
-body.lg-device .screenblock{height:550px;}
+.screenblock{/* height: 200px; */overflow: hidden;} /*utilizzato per sm*/
+body.lg-device .screenblock{/* height:550px; */}
 body.md-device .screenblock{height:467px;}
 body.md-device .screenblock{height:375px;}
 
-#block0{background:#fff;
-        background-size: cover; color:#f6f6c3; overflow: hidden;}
+
+#block0{background: url("../images/primaslide.jpg") center -250px no-repeat transparent;
+    -webkit-background-size: cover;-moz-background-size: cover;-o-background-size: cover;
+    background-size: cover;
+    color:#f6f6c3; overflow: hidden;}
 #homeimg{position: absolute;}
 
-#block1{background:#fff;
+#block1{background: transparent;
         background-size: cover;padding-top: 0;margin:0px 0px 0px;overflow: hidden;}
 #parallax-block1 {position: relative;left:0px;}
-#block2{background: #fff;
+#block2{background:transparent;
         background-size: cover;overflow: hidden;}
 #block2 div{/* margin-top: 200px; */}
-#block3{background: #fff;
+#block3{background:transparent;
         background-size: cover;overflow: hidden; }
 #fly-it{margin-top: 20px;}
 #ending-parallax{margin:200px 0px 400px;}
-
 
 
 
