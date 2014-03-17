@@ -11,7 +11,7 @@ and open the template in the editor.
 body{font-family: "Open Sans", Georgia; color:#444;margin: 0px;padding: 0px;}
 h1,h2,h3,h4{font-family: Engagement, "Open Sans", Georgia;text-align: center;}
 h1{font-size: 115px;font-weight: 400;}
-h2{font-size: 76px;font-weight: 400;margin: 20px 0px 40px;}
+h2{font-size: 96px;font-weight: 400;margin: 20px 0px 10px;text-align: left;}
 a{}
 #content0{margin-top: 12%;}
 .h1line{margin-top: 300px;}
@@ -21,7 +21,7 @@ a{}
 .main{padding: 51px 0px;}
 
 .content-block{background-color: #fff;top: 200px;
-    /* opacity: 0.8; */-moz-opacity: 0.8;filter: alpha(opacity=8.0);padding: 20px 40px 40px;
+    /* opacity: 0.8; */-moz-opacity: 0.8;filter: alpha(opacity=8.0);padding: 50px 40px 40px;
     overflow: hidden; /* margin-top: 200px; */width:100%;font-size: 24px;position: relative;}
 
 /*sfondi*/
@@ -31,7 +31,7 @@ a{}
 .backslide{}
 .godown{color: #666;  opacity: 0.8;
     -moz-opacity: 0.8;filter: alpha(opacity=8.0);font-size: 36px;font-weight: 400;
-    background: #fff;height: 55px;width: 55px;padding: 13px 8px;margin: 60px auto;display: block;}
+    background: #fff;height: 55px;width: 55px;padding: 13px 8px;margin: 10px auto;display: block;}
 .godown:hover{text-decoration: none;}
 
 /*Bloocchi verticali*/
@@ -43,12 +43,12 @@ body.md-device .screenblock{height:375px;}
 
 #block0{background: url("../images/primaslide.jpg") center -250px no-repeat transparent;
     -webkit-background-size: cover;-moz-background-size: cover;-o-background-size: cover;
-    background-size: cover;
-    color:#f6f6c3; overflow: hidden;}
+    background-size: cover;color:#f6f6c3; overflow: hidden;}
+#block0 .godown{margin: 60px auto;}
 #homeimg{position: absolute;}
 
 #block1{background: transparent;
-        background-size: cover;padding-top: 0;margin:0px 0px 0px;overflow: hidden;}
+        background-size: cover;padding-top: 0;margin:0px 0px 0px;overflow: visible;}
 #parallax-block1 {position: relative;left:0px;}
 #block2{background:transparent;
         background-size: cover;overflow: hidden;}
