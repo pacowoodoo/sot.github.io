@@ -3,159 +3,222 @@
     <head>
         <title>Sun of Tuscany - Presentazione</title>
         <meta charset="UTF-8">
-        <meta name="viewport" content="width=device-width">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
         <link rel="author" href="https://plus.google.com/113412762172857898460"/>
-        <link rel="stylesheet" href="skin/css/presentation.css" type="text/css">
+        <link rel="stylesheet" href="skin/css/bootstrap.min.css" type="text/css">
+        <link rel="stylesheet" href="skin/css/bootstrap-theme.min.css" type="text/css">
+        <link rel="stylesheet" href="skin/css/presentationbootstrap.css" type="text/css">
 
         <script type="text/javascript" src="skin/js/greensock/TweenMax.min.js"></script>
         <script type="text/javascript" src="skin/js/jquery-1.9.1.min.js"></script>
         <script type="text/javascript" src="skin/js/jquery-ui-1.9.2.custom.min.js"></script>
-
+        <script type="text/javascript" src="skin/js/bootstrap.min.js"></script>
         <script type="text/javascript" src="skin/js/jquery.superscrollorama.js"></script>
+        <script type="text/javascript" src="skin/js/jquery.backstretch.min.js"></script>
 
         <link href='http://fonts.googleapis.com/css?family=Engagement|Open+Sans:400italic,400,600,700' rel='stylesheet' type='text/css'>
         <script type="text/javascript">
             var $windowHeight = 800;
+            var heightAdjust = 50;
+            function findBootstrapEnvironment() {
+                var envs = ['xs', 'sm', 'md', 'lg'];
+
+                $el = $('<div>');
+                $el.appendTo($('body'));
+
+                for (var i = envs.length - 1; i >= 0; i--) {
+                    var env = envs[i];
+
+                    $el.addClass('hidden-'+env);
+                    if ($el.is(':hidden')) {
+                        $el.remove();
+                        return env
+                    }
+                };
+            }
+            
+            function changeDeviceClass(){
+               $("body").attr("class","");
+               $("body").addClass(findBootstrapEnvironment()+"-device");
+            }
+            
+            function setHeightAndWidths(){
+                windowHeight = $(window).innerHeight();
+                windowWidth = $(window).innerWidth();
+                //adeguo sfondi e pagine
+                 $(".screenblock").css("height",windowHeight);
+                 $(".back-container").css("height",windowHeight);
+                 $(".page1").css("width",windowWidth);
+                 $("#backgrounds").css("width",windowWidth);
+                 //controllo che l'immagine non diventi più corta del blocco
+                 if( windowWidth < 1600 ){
+                     $(".backslide").width("1600px");
+                     $("#homeimg").css("margin-left",(windowWidth-1600)/2);
+                 }else{
+                     $(".backslide").width("100%");
+                 }
+            }
             
             $(document).ready(function() {
-
-                $windowHeight = $(window).height(); // returns height of HTML document
-                //alert("altezza finestra"+$windowHeight);
+                $("#block0").backstretch("skin/images/primaslide.jpg");
+                $("#back1").backstretch("skin/images/castelloppinitida.jpg");
+                $("#back2").backstretch("skin/images/terzaslide.jpg");
+                $("#back3").backstretch("skin/images/vallecasentino.jpg");
+                $("#back4").backstretch("skin/images/back1.jpg");
                 
-                $(".screenblock").height($windowHeight);
+                changeDeviceClass();
+                setHeightAndWidths();
+                $(window).resize(function() {
+                    changeDeviceClass();
+                    setHeightAndWidths();
+                });
 
                 // This example adds a duration to the tweens so they are synced to the scroll position
                 var controller = $.superscrollorama();
 
                 // amount of scrolling over which the tween takes place (in pixels)
-                var scrollDuration = 600;
+                var scrollDuration = 3000;
 
-                // individual element tween examples
-                controller.addTween('#fade-it', TweenMax.from($('#fade-it'), 1.0, {css: {opacity: 0}}), 10);
-                controller.addTween('#fly-it', TweenMax.from($('#fly-it'), .75, {css: {right: '3000px', position: 'relative'}, ease: Quad.easeInOut}), 80);
-                controller.addTween('#spin-it', TweenMax.from($('#spin-it'), .25, {css: {opacity: 0, rotation: 720}, ease: Quad.easeOut}), scrollDuration);
-                controller.addTween('#smush-it', TweenMax.fromTo($('#smush-it'), .25, {css: {opacity: 0, 'letter-spacing': '30px'}, immediateRender: true, ease: Quad.easeInOut}, {css: {opacity: 1, 'letter-spacing': '-10px'}, ease: Quad.easeInOut}), scrollDuration); // 100 px offset for better timing
-                controller.addTween(
-                    '#block1',
-                    (new TimelineLite())
+                controller.addTween('#backgrounds',new TimelineLite()
                     .append([
-                        TweenMax.fromTo($('#parallax-block1'), 1,
-                                {css: {top: 400}, immediateRender: true},
-                        {css: {top: 100}})
-                    ]),
-                    1000 // scroll duration of tween
-                );
-                
-                // parallax example
-                controller.addTween(
-                    '#ending-parallax',
-                    (new TimelineLite())
+                        TweenMax.fromTo($('#back1'), 1,
+                        {css: {top: 870}, immediateRender: true},
+                        {css: {top: 250}})
+                        ]),scrollDuration );
+               controller.addTween('#backgrounds',new TimelineLite()
                     .append([
-                        TweenMax.fromTo($('#parallax-it-left'), 1,
-                                {css: {top: 200}, immediateRender: true},
-                        {css: {top: -600}}),
-                        TweenMax.fromTo($('#parallax-it-right'), 1,
-                                {css: {top: 500}, immediateRender: true},
-                        {css: {top: -1250}})
-                    ]),
-                    1000 // scroll duration of tween
-                );
+                        TweenMax.fromTo($('#back2'), 1,
+                        {css: {top: 870}, immediateRender: true},
+                        {css: {top: 250}})
+                        ]),scrollDuration );
+               controller.addTween('#backgrounds',new TimelineLite()
+                    .append([
+                        TweenMax.fromTo($('#back3'), 1,
+                        {css: {top: 970}, immediateRender: true},
+                        {css: {top: 350}})
+                        ]),scrollDuration ); 
+               controller.addTween('#backgrounds',new TimelineLite()
+                    .append([
+                        TweenMax.fromTo($('#back4'), 1,
+                        {css: {top: 1070}, immediateRender: true},
+                        {css: {top: 450}})
+                        ]),scrollDuration );
             });
 
-            function scrollToPage(pageNumber) {
-                $('body').animate({scrollTop: pageNumber * $windowHeight}, 700, 'swing', function() {
+            function scrollToPage(pageNumber, elem) {
+                $(".navbar-nav li").removeClass("active");
+                $('body').animate({scrollTop: (pageNumber * $windowHeight)+heightAdjust}, 700, 'swing', function() {
                 });
+                $(elem).parent("li").addClass("active");
             }
 
         </script>
 
     </head>
-    <body>     
-        <div id="topmenu">
-            <a href="javascript:void(0)" onclick="scrollToPage(0)">pagina 1</a>
-            <a href="javascript:void(0)" onclick="scrollToPage(1)">pagina 2</a>
-            <a href="javascript:void(0)" onclick="scrollToPage(2)">pagina 3</a>
-            <a href="javascript:void(0)" onclick="scrollToPage(3)">pagina 4</a>
+    <body>   
+        <div id="backgrounds">
+            <div class="back-container"  id="back1">
+            </div>
+            <div class="back-container"  id="back2">
+            </div>
+            <div class="back-container"  id="back3">
+            </div>
+            <div class="back-container"  id="back4">
+            </div>
         </div>
+        <div class="navbar navbar-inverse navbar-fixed-top" role="navigation">
+            <div class="container">
+                <div class="navbar-header">
+                    <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+                        <span class="sr-only">Toggle navigation</span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                    </button>
+                    <a class="navbar-brand" href="javascript:void(0)"  onclick="scrollToPage(0)">Sun of Tuscany</a>
+                </div>
+                <div class="collapse navbar-collapse">
+                    <ul class="nav navbar-nav">
+                        <li class="active"><a href="javascript:void(0)"  onclick="scrollToPage(0, this)">Home</a></li>
+                        <li><a href="javascript:void(0)" onclick="scrollToPage(1, this)">Pag 1</a></li>
+                        <li><a href="javascript:void(0)" onclick="scrollToPage(2, this)">Pag 2</a></li>
+                        <li><a href="javascript:void(0)" onclick="scrollToPage(3, this)">Pag 3</a></li>
+                    </ul>
+                </div><!--/.nav-collapse -->
+            </div>
+        </div>
+
         <div id="main" class="main onepage-wrapper">
-            <section id="block0"  class="screenblock page1">
-                <div id="title">
-                    <div class="h1line">
-                        <div class="h1lineleft"></div>
-                        <h1>Sun of Tuscany</h1>
-                        <div class="h1lineright"></div>
+            
+            
+            <div id="block0"  class="page1 screenblock container-fluid">
+                <div id="content0">
+                    <!--img  alt="" id="homeimg" class="backslide" src="skin/images/primaslide.jpg" /-->
+                    <div class="h1line col-xs-3 col-sm-offset-2 col-sm-2 col-m-offset-2 col-m-2 col-lg-offset-2 col-lg-2"></div>
+                    <div class="col-xs-6 col-sm-4 col-m-4 col-lg-4"><h1>Sun of Tuscany</h1></div>
+                    <div class="h1line col-xs-3 col-sm-2 col-m-2 col-lg-2"></div>
+                    <div class="col-xs-12 col-sm-12 col-m-12 col-lg-12">
+                        <a  href="javascript:void(0)" onclick="scrollToPage(1, this)" class="godown glyphicon glyphicon-chevron-down img-circle"></a>
                     </div>
                 </div>
-            </section>
+            </div>
 
-            <section id="block1"  class="screenblock page2">
-                <div id="parallax-block1" class="content-block">
-                    <h2>Il nostro progetto</h2>
-                    <p>Lorem ipsum dolor sit amet,estibulum lorem sit amet, faucibus ultricies orci. Curabitur semper nec libero faucibus suscipit. estibulum enim at, adipiscing enim. Morbi suscipit imperdiet purus, in auctor lectus fermentum ac.</p>
-
-                    <p>Nullam auctor, qEtiam sodales condimentum nisl, id vehicula tellus nibh at, dapibus mi. Maecenas tempus hendrerit dapibus. Donec dictum consectetur nulla, quis tincidunt metus.</p>
-
-                    <p>Morbi eget orci vehicula,rdum. Maecenas consequat tristique pulvinar. Duis condimentum elementum feugiat. Praesent vitae auctor ipsum. Vivamus accumsan at nisl sed hendrerit. Aliquam erat volutpat. Vestibulum nec porttitor turpis, ut ornare lectus.</p>
+            <div id="block1"  class="screenblock page2">
+                <div class="content-block col-xs-12 col-sm-12 col-m-12">
+                    <div class="col-xs-12 col-sm-5 col-sm-offset-1 col-m-5">
+                        <h2>La nostra vallata</h2>
+                        <p>Il Casentino una valle molto attiva con molte realtà produttive nel settore alimentare di qualità.</p> 
+                    </div>
+                    <div class="col-xs-0 col-sm-5 col-m-5">
+                        <img class="img-rounded img-responsive" src="skin/images/casentino.jpg">
+                    </div>
+                    <div class="col-xs-12 col-sm-12 col-m-12">
+                        <a  href="javascript:void(0)" onclick="scrollToPage(2, this)" class="godown glyphicon glyphicon-chevron-down img-circle"></a>
+                    </div>
                 </div>
-            </section>
+            </div>
 
-            <section id="block2"  class="screenblock page3">
-                <div id="fade-it" class="content-block">
-                    <h2>La nostra vallata</h2>
-                    <p>Lorem ipsum dolor sit amet,estibulum lorem sit amet, faucibus ultricies orci. Curabitur semper nec libero faucibus suscipit. estibulum enim at, adipiscing enim. Morbi suscipit imperdiet purus, in auctor lectus fermentum ac.</p>
-
-                    <p>Nullam auctor, qEtiam sodales condimentum nisl, id vehicula tellus nibh at, dapibus mi. Maecenas tempus hendrerit dapibus. Donec dictum consectetur nulla, quis tincidunt metus.</p>
-
-                    <p>Morbi eget orci vehicula,rdum. Maecenas consequat tristique pulvinar. Duis condimentum elementum feugiat. Praesent vitae auctor ipsum. Vivamus accumsan at nisl sed hendrerit. Aliquam erat volutpat. Vestibulum nec porttitor turpis, ut ornare lectus.</p> 
+            <div id="block2"  class="screenblock page3">
+                <div class="content-block">
+                    <h2>La poca crescita</h2>
+                    <p>Casentino una valle molto produttiva ma con poche infrastrutture che la penalizzano 
+                        nei collegamenti e quindi nell’espansione commerciale.</p> 
+                    <div class="col-xs-12 col-sm-12 col-m-12 col-lg-12">
+                        <a  href="javascript:void(0)" onclick="scrollToPage(3, this)" class="godown glyphicon glyphicon-chevron-down img-circle"></a>
+                    </div>
                 </div>
-            </section>
+            </div>
 
-            <section id="block3"  class="screenblock page3">
-                <div id="fly-it" class="content-block">
+            <div id="block3"  class="screenblock page3">
+                <div class="content-block">
+                    
+                    <div class="col-xs-0 col-sm-5 col-m-5">
+                        <img style="margin-top:20px;" class="img-rounded img-responsive" src="skin/images/venditeecommerce.jpg">
+                    </div>
+                    <div class="col-xs-12 col-sm-5 col-sm-offset-1 col-m-5">
+                        <h2>Commercio online</h2>
+                        <p>Il commercio online è l’unico canale che non risente dei problemi nei collegamenti ed è un mercati in continua crescita e previsioni.</p>
+                    </div>
+                    <div class="col-xs-12 col-sm-12 col-m-12 col-lg-12">
+                        <a  href="javascript:void(0)" onclick="scrollToPage(4, this)" class="godown glyphicon glyphicon-chevron-down img-circle"></a>
+                    </div>
+                </div>
+            </div>
+            
+            <div id="block4"  class="screenblock page3">
+                <div class="content-block">
                     <h2>Come lo faremo</h2>
                     <p>Lorem ipsum dolor sit amet,estibulum lorem sit amet, faucibus ultricies orci. Curabitur semper nec libero faucibus suscipit. estibulum enim at, adipiscing enim. Morbi suscipit imperdiet purus, in auctor lectus fermentum ac.</p>
 
                     <p>Nullam auctor, qEtiam sodales condimentum nisl, id vehicula tellus nibh at, dapibus mi. Maecenas tempus hendrerit dapibus. Donec dictum consectetur nulla, quis tincidunt metus.</p>
 
                     <p>Morbi eget orci vehicula,rdum. Maecenas consequat tristique pulvinar. Duis condimentum elementum feugiat. Praesent vitae auctor ipsum. Vivamus accumsan at nisl sed hendrerit. Aliquam erat volutpat. Vestibulum nec porttitor turpis, ut ornare lectus.</p>
-                </div>
-            </section>
-
-          
-            <section id="ending-parallax" >
-                <h2 id="parallax-it">Insieme è possibile</h2>
-                <h2 id="parallax-it-left">Insieme è possibile</h2>
-                <h2 id="parallax-it-right">Insieme è possibile</h2>
-            </section>
-
-            <!--div id="block4"  class="screenblock">
-                <div id="spin-it">
-                    <h2>tripponi diabetici1</h2>
-                    m ante, feugiat vitae luctus eget, feugiat eget elit. In blandit, tellus fermentum accumsan lobortis, sapien sem vulputate ante, ac porttitor dui tortor vel lacus. Donec nunc nunc, posuere at erat ac, gravida rhoncus orci. Aenean non lectus sem. Cras semper hendrerit felis, sed feugiat neque congue id. Nulla et laoreet diam. Ut felis tortor, venenatis et erat placerat, commodo accumsan
+                    <div class="col-xs-12 col-sm-12 col-m-12 col-lg-12">
+                        <a  href="javascript:void(0)" onclick="scrollToPage(4, this)" class="godown glyphicon glyphicon-chevron-down img-circle"></a>
+                    </div>
                 </div>
             </div>
-
-            <div id="block5"  class="screenblock">
-                <div id="fade-it">
-                    <h2>pulezze de marroni</h2>
-                    m ante, feugiat vitae luctus eget, feugiat eget elit. In blandit, tellus fermentum accumsan lobortis, sapien sem vulputate ante, ac porttitor dui tortor vel lacus. Donec nunc nunc, posuere at erat ac, gravida rhoncus orci. Aenean non lectus sem. Cras semper hendrerit felis, sed feugiat neque congue id. Nulla et laoreet diam. Ut felis tortor, venenatis et erat placerat, commodo accumsan
-                </div>
-            </div>
-
-            <div id="block6"  class="screenblock">
-                <div id="fly-it">
-                    <h2>tripponi diabetici</h2>
-                    m ante, feugiat vitae luctus eget, feugiat eget elit. In blandit, tellus fermentum accumsan lobortis, sapien sem vulputate ante, ac porttitor dui tortor vel lacus. Donec nunc nunc, posuere at erat ac, gravida rhoncus orci. Aenean non lectus sem. Cras semper hendrerit felis, sed feugiat neque congue id. Nulla et laoreet diam. Ut felis tortor, venenatis et erat placerat, commodo accumsan
-                </div>
-            </div>
-            <div>
-                <h2>tripponi diabetici1</h2>
-                m ante, feugiat vitae luctus eget, feugiat eget elit. In blandit, tellus fermentum accumsan lobortis, sapien sem vulputate ante, ac porttitor dui tortor vel lacus. Donec nunc nunc, posuere at erat ac, gravida rhoncus orci. Aenean non lectus sem. Cras semper hendrerit felis, sed feugiat neque congue id. Nulla et laoreet diam. Ut felis tortor, venenatis et erat placerat, commodo accumsan
-            </div>
-            <div>
-                <h2>tripponi diabetici1</h2>
-                m ante, feugiat vitae luctus eget, feugiat eget elit. In blandit, tellus fermentum accumsan lobortis, sapien sem vulputate ante, ac porttitor dui tortor vel lacus. Donec nunc nunc, posuere at erat ac, gravida rhoncus orci. Aenean non lectus sem. Cras semper hendrerit felis, sed feugiat neque congue id. Nulla et laoreet diam. Ut felis tortor, venenatis et erat placerat, commodo accumsan
-            </div-->
+            
         </div>
     </body>
 </html>
