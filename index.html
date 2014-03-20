@@ -77,27 +77,35 @@
                 var controller = $.superscrollorama();
 
                 // amount of scrolling over which the tween takes place (in pixels)
-                var scrollDuration = 3000;
-
-                controller.addTween('#backgrounds',new TimelineLite()
+                var scrollDuration = 2000;
+                /* tanto per non sentirsi scemi 
+                 .addTween(target, tween, duration, offset, reverse)
+                    target: scroll position (number) or element (string or object)
+                    tween: a Greensock animation tween object
+                    duration: scroll duration of tween in pixels (0 means autoplay)
+                    offset: adjust the animation start point
+                    reverse: disable reverse animation on up scrolling (optional)
+                 * 
+                 * */
+                controller.addTween('#back-container1',new TimelineLite()
                     .append([
                         TweenMax.fromTo($('#back1'), 1,
                         {css: {top: 870}, immediateRender: true},
                         {css: {top: 250}})
                         ]),scrollDuration );
-               controller.addTween('#backgrounds',new TimelineLite()
+               controller.addTween('#back-container2',new TimelineLite()
                     .append([
                         TweenMax.fromTo($('#back2'), 1,
                         {css: {top: 870}, immediateRender: true},
                         {css: {top: 250}})
                         ]),scrollDuration );
-               controller.addTween('#backgrounds',new TimelineLite()
+               controller.addTween('#back-container3',new TimelineLite()
                     .append([
                         TweenMax.fromTo($('#back3'), 1,
                         {css: {top: 970}, immediateRender: true},
                         {css: {top: 350}})
-                        ]),scrollDuration ); 
-               controller.addTween('#backgrounds',new TimelineLite()
+                        ]),scrollDuration); 
+               controller.addTween('#back-container4',new TimelineLite()
                     .append([
                         TweenMax.fromTo($('#back4'), 1,
                         {css: {top: 1070}, immediateRender: true},
@@ -117,14 +125,10 @@
     </head>
     <body>   
         <div id="backgrounds">
-            <div class="back-container"  id="back1">
-            </div>
-            <div class="back-container"  id="back2">
-            </div>
-            <div class="back-container"  id="back3">
-            </div>
-            <div class="back-container"  id="back4">
-            </div>
+            <div id="back-container1"><div class="back-container"  id="back1"></div></div>
+            <div id="back-container2"><div class="back-container"  id="back2"></div></div>
+            <div id="back-container3"><div class="back-container"  id="back3"></div></div>
+            <div id="back-container4"><div class="back-container"  id="back4"></div></div>
         </div>
         <div class="navbar navbar-inverse navbar-fixed-top" role="navigation">
             <div class="container">
