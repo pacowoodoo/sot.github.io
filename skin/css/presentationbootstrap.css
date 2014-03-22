@@ -9,7 +9,7 @@ and open the template in the editor.
 */
 
 body{font-family: "Open Sans", Georgia; color:#444;margin: 0px;padding: 0px;
-    background-color: #000;}
+    /* background-color: #000; */}
 h1,h2,h3,h4{font-family: Engagement, "Open Sans", Georgia;text-align: center;}
 h1{font-size: 115px;font-weight: 400;}
 h2{font-size: 96px;font-weight: 400;margin: 0px 0px 10px;text-align: left;}
