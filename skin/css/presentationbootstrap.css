@@ -19,11 +19,22 @@ a{}
 .h1line{border-top: 3px solid #fff;/* width: 125px; */ margin-top: 86px;}
 #block0 h1{/* width: 550px; */text-align: center;color: #FCEC3A;}
 
-.main{padding: 51px 0px;}
+.main{padding: 51px 0px;font-size: 24px;}
+.content-block{padding: 20px 0px;}
 
-.content-block{font-size: 24px;padding: 20px 0px;}
+/*Small */
+.sm-device h1{font-size: 64px;}
+.sm-device h2{font-size: 18px;}
+.sm-device .main{font-size: 16px;}
+.sm-device .godown{font-size: 18px;}
 
-/*sfondi*/
+/*ExtraSmall */
+.xs-device h1{font-size: 58px;}
+.xs-device h2{font-size: 36px;}
+.xs-device .main{font-size: 14px;}
+.xs-device .godown{font-size: 21px;height: 40px;width: 40px;}
+
+/*Sfondi*/
 #backgrounds{position: absolute;z-index: -10;/* display: none; */}
 #backgrounds .backslide{width: 100%;}
 #backgrounds .back-image{overflow: hidden;text-align: center;}
