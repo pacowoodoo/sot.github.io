@@ -18,7 +18,10 @@
 
         <link href='http://fonts.googleapis.com/css?family=Engagement|Open+Sans:400italic,400,600,700' rel='stylesheet' type='text/css'>
         <script type="text/javascript">
-            var $windowHeight = 800;
+            var windowHeight;
+            var windowWidth;
+            var heightContent;
+            var heightScroller;
             var heightAdjust = 50;
             function findBootstrapEnvironment() {
                 var envs = ['xs', 'sm', 'md', 'lg'];
@@ -45,12 +48,12 @@
             function setHeightAndWidths(){
                 windowHeight = $(window).innerHeight();
                 windowWidth = $(window).innerWidth();
-                height60 = (windowHeight/10)*6;
-                height40 = (windowHeight/10)*4;
+                heightContent  = (windowHeight/10)*7;
+                heightScroller = (windowHeight/10)*5;
 
                 //adeguo sfondi e pagine
-                 $(".screenblock").css("height",height60);
-                 $(".scroller-space").css("height",height40);
+                 $(".screenblock").css("height",heightContent);
+                 $(".scroller-space").css("height",heightScroller);
                  $("#block0").css("height",windowHeight);
                  $(".back-container").css("height",windowHeight);
                  $(".page1").css("width",windowWidth);
@@ -58,10 +61,13 @@
                  //controllo che l'immagine non diventi più corta del blocco
                  if( windowWidth < 1600 ){
                      $(".backslide").width("1600px");
-                     $("#homeimg").css("margin-left",(windowWidth-1600)/2);
                  }else{
                      $(".backslide").width("100%");
                  }
+            }
+            
+            function addParallaxBackground(id, numeralPosition){
+                
             }
             
             $(document).ready(function() {
@@ -89,7 +95,7 @@
                 var controller = $.superscrollorama();
 
                 // amount of scrolling over which the tween takes place (in pixels)
-                var scrollDuration = 2000;
+                var scrollDuration = windowHeight*2;
                 /* tanto per non sentirsi scemi 
                  .addTween(target, tween, duration, offset, reverse)
                     target: scroll position (number) or element (string or object)
@@ -99,30 +105,36 @@
                     reverse: disable reverse animation on up scrolling (optional)
                  * 
                  * */
+                blockstart = windowHeight;
+                blockfinish = blockstart-heightScroller;
+                blockstartpoint = blockstart - windowHeight/2;
                 controller.addTween('#back-container1',new TimelineLite()
                     .append([
                         TweenMax.fromTo($('#back1'), 1,
-                        {css: {top: 900}, immediateRender: true},
-                        {css: {top: 650}})
-                        ]),scrollDuration );
+                        {css: {top: blockstart}, immediateRender: true},
+                        {css: {top: blockfinish}})
+                        ]),scrollDuration,blockstartpoint );
+               blockstart = heightScroller + heightContent;
+               blockfinish = blockstart-heightScroller;
+               blockstartpoint = blockstart - windowHeight/2;
                controller.addTween('#back-container2',new TimelineLite()
                     .append([
                         TweenMax.fromTo($('#back2'), 1,
-                        {css: {top: 870}, immediateRender: true},
-                        {css: {top: 350}})
-                        ]),scrollDuration );
+                        {css: {top: blockstart}, immediateRender: true},
+                        {css: {top: blockfinish}})
+                        ]),scrollDuration,blockstartpoint );
                controller.addTween('#back-container3',new TimelineLite()
                     .append([
                         TweenMax.fromTo($('#back3'), 1,
-                        {css: {top: 930}, immediateRender: true},
-                        {css: {top: 450}})
-                        ]),scrollDuration); 
+                        {css: {top: blockstart}, immediateRender: true},
+                        {css: {top: blockfinish}})
+                        ]),scrollDuration,blockstartpoint); 
                controller.addTween('#back-container4',new TimelineLite()
                     .append([
                         TweenMax.fromTo($('#back4'), 1,
-                        {css: {top: 825}, immediateRender: true},
-                        {css: {top: 350}})
-                        ]),scrollDuration );
+                        {css: {top: blockstart}, immediateRender: true},
+                        {css: {top: blockfinish}})
+                        ]),scrollDuration,blockstartpoint );
             });
 
         </script>
