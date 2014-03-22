@@ -49,13 +49,15 @@
                 windowHeight = $(window).innerHeight();
                 windowWidth = $(window).innerWidth();
                 heightContent  = (windowHeight/10)*7;
-                heightScroller = (windowHeight/10)*5;
+                heightScroller = (windowHeight/10)*6;
 
                 //adeguo sfondi e pagine
                  $(".screenblock").css("height",heightContent);
                  $(".scroller-space").css("height",heightScroller);
                  $("#block0").css("height",windowHeight);
-                 $(".back-container").css("height",windowHeight);
+                 $(".back-image").css("height",windowHeight);
+                 $(".back-container").css("height", heightScroller + heightContent);
+                 $("#back-container1").css("height", windowHeight);
                  $(".page1").css("width",windowWidth);
                  $("#backgrounds").css("width",windowWidth);
                  //controllo che l'immagine non diventi più corta del blocco
@@ -105,18 +107,19 @@
                     reverse: disable reverse animation on up scrolling (optional)
                  * 
                  * */
-                blockstart = windowHeight;
-                blockfinish = blockstart-heightScroller;
-                blockstartpoint = blockstart - windowHeight/2;
+                
+                blockfinish = windowHeight;
+                blockstart = blockfinish-heightScroller;
+                blockstartpoint = blockfinish - windowHeight/2;
                 controller.addTween('#back-container1',new TimelineLite()
                     .append([
                         TweenMax.fromTo($('#back1'), 1,
                         {css: {top: blockstart}, immediateRender: true},
                         {css: {top: blockfinish}})
                         ]),scrollDuration,blockstartpoint );
-               blockstart = heightScroller + heightContent;
-               blockfinish = blockstart-heightScroller;
-               blockstartpoint = blockstart - windowHeight/2;
+               blockfinish = heightScroller + heightContent;
+               blockstart = blockfinish-heightScroller;
+               blockstartpoint = blockfinish - windowHeight/2;
                controller.addTween('#back-container2',new TimelineLite()
                     .append([
                         TweenMax.fromTo($('#back2'), 1,
@@ -142,10 +145,10 @@
     </head>
     <body>   
         <div id="backgrounds">
-            <div id="back-container1"><div class="back-container"  id="back1"></div></div>
-            <div id="back-container2"><div class="back-container"  id="back2"></div></div>
-            <div id="back-container3"><div class="back-container"  id="back3"></div></div>
-            <div id="back-container4"><div class="back-container"  id="back4"></div></div>
+            <div id="back-container1" class="back-container"><div class="back-image"  id="back1"></div></div>
+            <div id="back-container2" class="back-container"><div class="back-image"  id="back2"></div></div>
+            <div id="back-container3" class="back-container"><div class="back-image"  id="back3"></div></div>
+            <div id="back-container4" class="back-container"><div class="back-image"  id="back4"></div></div>
         </div>
         <div class="navbar navbar-inverse navbar-fixed-top" role="navigation">
             <div class="container">

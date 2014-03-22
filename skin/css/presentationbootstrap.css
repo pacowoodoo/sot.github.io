@@ -26,7 +26,7 @@ a{}
 /*sfondi*/
 #backgrounds{position: absolute;z-index: -10;/* display: none; */}
 #backgrounds .backslide{width: 100%;}
-#backgrounds .back-container{overflow: hidden;text-align: center;}
+#backgrounds .back-image{overflow: hidden;text-align: center;}
 .backslide{}
 .godown{color: #666;  opacity: 0.8;
     -moz-opacity: 0.8;filter: alpha(opacity=8.0);font-size: 36px;font-weight: 400;
