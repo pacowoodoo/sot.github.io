@@ -19,7 +19,8 @@
         <script type="text/javascript" src="skin/js/bootstrap.min.js"></script>
         <script type="text/javascript" src="skin/js/jquery.superscrollorama.js"></script>
         <script type="text/javascript" src="skin/js/jquery.backstretch.min.js"></script>
-
+        <script type="text/javascript" src="skin/js/jquery.lazy.min.js"></script>
+        
         <link href='http://fonts.googleapis.com/css?family=Engagement|Open+Sans:400italic,400,600,700' rel='stylesheet' type='text/css'>
         <script type="text/javascript">
             var windowHeight;
@@ -95,6 +96,11 @@
                 $("#back10").backstretch("skin/images/sfondi/partina.jpg");
                 $("#back11").backstretch("skin/images/sfondi/pieve_di_romena.jpg");
                 $("#back12").backstretch("skin/images/sfondi/porta.jpg");
+                
+                jQuery("lazy").lazy({
+                    combined: true,
+                    delay: 5000
+                });
                 
                 $('a.godown, .navbar-nav a').click(function(){
                     $('html, body').animate({
@@ -265,9 +271,8 @@
             <div id="block4"  class="screenblock">
                 <div class="content-block col-xs-11 col-sm-11 col-m-12">
                     <div class="col-xs-12 col-sm-10 col-sm-offset-1 col-m-10 col-lg-10">
-                        <h2>Come lo faremo</h2>
-                        <p>Lorem ipsum dolor sit amet,estibulum lorem sit amet, faucibus ultricies orci. 
-                            Curabitur semper nec libero faucibus suscipit. estibulum enim at.</p>
+                        <h2>Obiettivo</h2>
+                        <p>Il nostro obiettivo è quello unire le eccellenze Casentinesi nel settore alimentare e creare un portale di vendita online prima per l’Italia e poi sui mercati esteri.</p>
                     </div>
                     <div class="col-xs-12 col-sm-12 col-m-12">
                         <a  href="#block5" class="godown glyphicon glyphicon-chevron-down img-circle"></a>
@@ -278,11 +283,11 @@
             <div id="block5"  class="screenblock">
                 <div class="content-block col-xs-12 col-sm-12 col-m-12">
                     <div class="col-xs-12 col-sm-5 col-sm-offset-1 col-m-5">
-                        <h2>La nostra vallata</h2>
+                        <h2>COME: [Presenteremo la vostra azienda]</h2>
                         <p>Il Casentino una valle molto attiva con molte realtà produttive nel settore alimentare di qualità.</p> 
                     </div>
                     <div class="hidden-xs col-sm-5 col-m-5  ">
-                        <img class="img-rounded img-responsive" src="skin/images/casentino.jpg">
+                        <!--img class="img-rounded img-responsive" src="skin/images/casentino.jpg"-->
                     </div>
                     <div class="col-xs-12 col-sm-12 col-m-12">
                         <a  href="#block6" class="godown glyphicon glyphicon-chevron-down img-circle"></a>
@@ -382,12 +387,8 @@
             <div class="scroller-space"></div>
             <div id="block12"  class="screenblock">
                 <div class="content-block col-xs-12 col-sm-12 col-m-12">
-                    <div class="col-xs-0 hidden-xs col-sm-5 col-sm-offset-1 col-m-5">
-                        <img style="margin-top:20px;" class="img-rounded img-responsive" src="skin/images/venditeecommerce.jpg">
-                    </div>
-                    <div class="col-xs-12 col-sm-5 col-m-5">
-                        <h2>Commercio online</h2>
-                        <p>Il commercio online è l’unico canale che non risente dei problemi nei collegamenti ed è un mercati in continua crescita e previsioni.</p>
+                    <div class="col-xs-12 col-sm-12 col-m-12">
+                        <h2 style="text-align: center;">Grazie</h2>
                     </div>
                 </div>
             </div>
