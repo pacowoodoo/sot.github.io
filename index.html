@@ -71,6 +71,16 @@
                  }else{
                      $(".backslide").width("100%");
                  }
+                 
+                 $('body').scrollspy({ target: '.navbar-collapse', offset:(heightContent/2)});
+            }
+            
+            function goToNextBlock(){
+                $(".navbar-collapse .active").next().find("a").click();
+            }
+            
+            function goToPrevBlock(){
+                $(".navbar-collapse .active").prev().find("a").click();
             }
             
             function addParallaxBackground(controller, idcont, id, start, finish, scrollduration, startpoint){
@@ -82,7 +92,25 @@
                         ]),scrollduration,startpoint );
             }
             
+            function addAutoScroll(){
+                $(document).keydown(function (e) {
+                    e.stopPropagation();
+                    if (e.keyCode === 40) {
+                        e.preventDefault();
+                        goToNextBlock();
+                    } else if (e.keyCode === 38) {
+                        e.preventDefault();
+                        goToPrevBlock();
+                    }
+                    
+                
+                    
+                });
+            }
+            
             $(document).ready(function() {
+                
+                
                 $("#block0").backstretch("skin/images/sfondi/primaslide.jpg");
                 $("#back1").backstretch("skin/images/sfondi/castellopoppi.jpg");
                 $("#back2").backstretch("skin/images/sfondi/trenocasentino.jpg");
@@ -166,6 +194,8 @@
                        blockfinish,scrollDuration,blockstartpoint);
                addParallaxBackground(controller,'back-container12','back12',blockstart,
                        blockfinish,scrollDuration,blockstartpoint);
+              
+              addAutoScroll();
               
             });
 

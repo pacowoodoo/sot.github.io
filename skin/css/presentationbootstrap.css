@@ -12,7 +12,7 @@ body{font-family: "Open Sans", Georgia; color:#444;margin: 0px;padding: 0px;
     /* background-color: #000; */}
 h1,h2,h3,h4{font-family: Engagement, "Open Sans", Georgia;text-align: center;}
 h1{font-size: 115px;font-weight: 400;}
-h2{font-size: 96px;font-weight: 400;margin: 0px 0px 10px;text-align: left;}
+h2{font-size: 64px;font-weight: 400;margin: 0px 0px 10px;text-align: left;}
 a{}
 #content0{margin-top: 12%;}
 .h1line{margin-top: 300px;}
@@ -24,7 +24,7 @@ a{}
 
 /*Small */
 .sm-device h1{font-size: 64px;}
-.sm-device h2{font-size: 18px;}
+.sm-device h2{font-size: 36px;}
 .sm-device .main{font-size: 16px;}
 .sm-device .godown{font-size: 18px;}
 
