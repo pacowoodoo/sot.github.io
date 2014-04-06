@@ -203,21 +203,10 @@
               
             });
 
-            function contactForm(){ 
-                $.ajax({
-                    dataType: 'jsonp',
-                    url: "http://getsimpleform.com/messages/ajax?form_api_token=f2504af563c85c515c067b358018165d",
-                    data: {
-                      azienda: $("#azienda").val(),
-                      email: $("#email").val(),
-                      telefono: $("#telefono").val(),
-                      commento: $("#commento").val()
-                    }
-                  }).done(function() {
-                    //callback which can be used to show a thank you message
-                    //and reset the form
-                    alert("Grazie per averci contattato ti risponderemo quanto prima");
-                  });
+            function contactForm(){
+                $postUrl = "http://getsimpleform.com/messages?form_api_token=f2504af563c85c515c067b358018165d";
+                //aggiungere redirect url redirect_to
+                $message 
             }
         </script>
 
