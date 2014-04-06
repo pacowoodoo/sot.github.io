@@ -72,16 +72,16 @@
                      $(".backslide").width("100%");
                  }
                  
-                 $('body').scrollspy({ target: '.navbar-collapse', offset:(heightContent/2)});
+                 $('body').scrollspy({ target: '.navbar', offset:(heightContent/2)});
             }
             
             function goToNextBlock(){
-                $(".navbar-collapse .active").next().find("a").click();
+                $(".navbar-collapse .active").next().find("a:not(.dropdown-toggle)").first().click();
             }
             
             function goToPrevBlock(){
-                if($(".navbar-collapse .active").prev()){
-                    $(".navbar-collapse .active").prev().find("a").click();
+                if($(".navbar-collapse .active").prev().size() > 0){
+                    $(".navbar-collapse .active").prev().find("a:not(.dropdown-toggle)").last().click();
                 }else{
                     $(".navbar-brand").click();
                 }
@@ -251,15 +251,22 @@
                 </div>
                 <div class="collapse navbar-collapse">
                     <ul class="nav navbar-nav">
+                        <li><a href="#block0">Home</a></li>
                         <li><a href="#block1">Casentino</a></li>
                         <li><a href="#block2">Crescita</a></li>
                         <li><a href="#block3">Ecommerce</a></li>
-                        <li><a href="#block4">Come:</a></li>
-                        <li><a href="#block5">esperienza</a></li>
-                        <li><a href="#block6">seo</a></li>
-                        <li><a href="#block7">foto</a></li>
-                        <li><a href="#block8">spedizioni</a></li>
-                        <li><a href="#block9">pubblicità</a></li>
+                        <li class="dropdown">
+                        <a href="#" class="dropdown-toggle" data-toggle="dropdown">Il progetto <b class="caret"></b></a>
+                            <ul class="dropdown-menu">
+                                <li><a href="#block4">progetto </a></li>
+                                <li><a href="#block5">esperienza</a></li>
+                                <li><a href="#block6">seo</a></li>
+                                <li><a href="#block7">foto</a></li>
+                                <li><a href="#block8">spedizioni</a></li>
+                                <li><a href="#block9">pubblicità</a></li>
+                            </ul>                  
+                        </li>
+                        
                         <li><a href="#block10">Estero</a></li>
                         <li><a href="#block12">Contattaci</a></li>
                     </ul>
@@ -488,7 +495,7 @@
                               <span class="input-group-addon">Telefono:</span>
                               <input type="text" class="form-control" id="telefono" name='telefono' placeholder="Telefono">
                             </div>
-                            <textarea class="form-control" rows="3" id="commento" placeholder="Commento"></textarea>
+                            <textarea class="form-control input-group" rows="3" id="commento" placeholder="Commento"></textarea>
                             <button type="button" class="btn btn-lg btn-success pull-right" onclick="contactForm();">
                                 Invia 
                             </button>
