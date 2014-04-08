@@ -29,6 +29,7 @@
         <script type="text/javascript" src="skin/js/jquery.superscrollorama.js"></script>
         <script type="text/javascript" src="skin/js/jquery.backstretch.min.js"></script>
         <script type="text/javascript" src="skin/js/jquery.lazy.min.js"></script>
+        <script type="text/javascript" src="skin/js/jquery.mousewheel.js"></script>
         
         <link href='http://fonts.googleapis.com/css?family=Engagement|Open+Sans:400italic,400,600,700' rel='stylesheet' type='text/css'>
         <script type="text/javascript">
@@ -105,7 +106,24 @@
                         ]),scrollduration,startpoint );
             }
             
+            var scrollingSemaphore = true;
             function addAutoScroll(){
+                $(document).bind("mousewheel", function(event) {
+                    if(scrollingSemaphore){
+                        scrollingSemaphore = false;
+                        
+                        if(event.deltaY > 0){
+                            goToPrevBlock();
+                        }else{
+                            goToNextBlock();
+                        }
+                        scrollingSemaphore = true;
+                        return false;
+                    }else{
+                        return false;
+                    }
+                });
+                
                 $(document).keydown(function (e) {
                     e.stopPropagation();
                     if (e.keyCode === 40) {
@@ -261,6 +279,7 @@
                 <div class="collapse navbar-collapse">
                     <ul class="nav navbar-nav">
                         <li><a href="#block0">Home</a></li>
+                        <li><a href="#block11">Chi siamo</a></li>
                         <li><a href="#block1">Casentino</a></li>
                         <li><a href="#block2">Crescita</a></li>
                         <li><a href="#block3">Ecommerce</a></li>
@@ -292,6 +311,34 @@
                     <div class="h1line col-xs-3 col-sm-offset-2 col-sm-2 col-m-offset-2 col-m-2 col-lg-offset-2 col-lg-2"></div>
                     <div class="col-xs-6 col-sm-4 col-m-4 col-lg-4"><h1>Sun of Tuscany</h1></div>
                     <div class="h1line col-xs-3 col-sm-2 col-m-2 col-lg-2"></div>
+                    <div class="col-xs-12 col-sm-12 col-m-12 col-lg-12">
+                        <a  href="#block11" class="godown glyphicon glyphicon-chevron-down img-circle"></a>
+                    </div>
+                </div>
+            </div>
+            <div class="scroller-space"></div>
+            <div id="block11"  class="screenblock">
+                <div class="content-block col-xs-12 col-sm-12 col-m-12">
+                    <div class="col-xs-12 col-sm-12 col-m-12">
+                        <h2>Chi siamo</h2>
+                        <div class="col-xs-12 col-sm-4 col-m-4">
+                            <h3>Filippo Angioli</h3>
+                            <p>Consulente informatico, è da sempre presente nell'organizzazione
+                                di eventi di promozione del Casentino come: Casentino Love Affair,
+                                sapori del Casentino.</p>
+                        </div>
+                        <div class="col-xs-12 col-sm-4 col-m-4">
+                            <h3>Alessandro Pieraccini</h3>
+                            <p>Ecommerce manager, lavora da anni come manager di sistemi di vendita online
+                            sia indipendenti, sia basandosi su sistemi com eBay o Amazon.</p>
+                        </div>
+                        <div class="col-xs-12 col-sm-4 col-m-4">
+                            <h3>Luca Innocenti</h3>
+                            <p>Sviluppatore web, si occupa da 4 anni della creazione e sviluppo di ecommerce
+                                di alto livello, come Monnalisadreams, Miniconf e Computer Discount.</p>
+                        </div>
+
+                    </div>
                     <div class="col-xs-12 col-sm-12 col-m-12 col-lg-12">
                         <a  href="#block1" class="godown glyphicon glyphicon-chevron-down img-circle"></a>
                     </div>
@@ -344,7 +391,7 @@
                         <a  href="#block4" class="godown glyphicon glyphicon-chevron-down img-circle"></a>
                     </div>
                 </div>
-            </div>
+            </div>            
             <div class="scroller-space"></div>
             <div id="block4"  class="screenblock">
                 <div class="content-block col-xs-12 col-sm-12 col-m-12">
@@ -464,21 +511,6 @@
                     </div>
                 </div>
             </div>
-            <!--div class="scroller-space"></div>
-            <div id="block11"  class="screenblock">
-                <div class="content-block col-xs-12 col-sm-12 col-m-12">
-                    <div class="col-xs-0 hidden-xs col-sm-5 col-sm-offset-1 col-m-5">
-                        <img style="margin-top:20px;" class="img-rounded img-responsive" src="skin/images/venditeecommerce.jpg">
-                    </div>
-                    <div class="col-xs-12 col-sm-5 col-m-5">
-                        <h2>Commercio online</h2>
-                        <p>Il commercio online è l’unico canale che non risente dei problemi nei collegamenti ed è un mercati in continua crescita e previsioni.</p>
-                    </div>
-                    <div class="col-xs-12 col-sm-12 col-m-12 col-lg-12">
-                        <a  href="#block12" class="godown glyphicon glyphicon-chevron-down img-circle"></a>
-                    </div>
-                </div>
-            </div-->
             <div class="scroller-space"></div>
             <div id="block12"  class="screenblock">
                 <div class="content-block col-xs-12 col-sm-12 col-m-12">

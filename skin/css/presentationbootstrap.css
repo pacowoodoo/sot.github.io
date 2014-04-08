@@ -25,13 +25,16 @@ a{}
 /*Small */
 .sm-device h1{font-size: 64px;}
 .sm-device h2{font-size: 36px;}
+.sm-device h3{font-size: 18px;}
 .sm-device .main{font-size: 16px;}
 .sm-device .godown{font-size: 18px;}
 
 /*ExtraSmall */
 .xs-device h1{font-size: 58px;}
 .xs-device h2{font-size: 36px;}
+.xs-device h3{font-size: 14px;margin-top: 0px;margin-bottom: 0px;}
 .xs-device .main{font-size: 14px;}
+.xs-device #block11{font-size: 12px;}
 .xs-device .godown{font-size: 21px;height: 40px;width: 40px;}
 
 /*Sfondi*/
@@ -57,6 +60,6 @@ body.md-device .screenblock{height:375px;}
 #block0{color:#f6f6c3; overflow: hidden;box-shadow: 0px 0px 20px #000;}
 #block0 .godown{margin: 60px auto;}
 #homeimg{position: absolute;}
-
+#block12{height: 600px !important;}
 /*contactus*/
 #contactus .input-group{margin-bottom: 15px;}
