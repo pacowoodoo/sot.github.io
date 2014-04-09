@@ -1,0 +1,554 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <title>Sun of Tuscany - Presentazione</title>
+        <meta name="description" content="Acquista su Sun Of Tuscany prodotti genuini della Toscana, direttamente dal produttore al consumatore.">
+        <meta name="keywords" content="Tuscany, Toscana, alimenti, prosciutto crudo, salame, pecorino toscano">
+
+        <!--meta property="fb:app_id" content="174829003346">
+        <meta property="og:title" content="Sun O">
+        <meta property="og:type" content="website">
+        <meta property="og:url" content="https://www.spotify.com/">
+        <meta property="og:image:secure_url" content="https://d2c87l0yth4zbw.cloudfront.net/i/_global/open-graph-default.jpg">
+        <meta property="og:description" content="Spotify è un servizio musicale digitale che ti consente di accedere a milioni di brani."-->
+        
+        <link rel="icon" href="skin/favicon.ico" type="image/x-icon" />
+        <link rel="shortcut icon" href="skin/favicon.ico" type="image/x-icon" />
+        
+        <link rel="author" href="https://plus.google.com/113412762172857898460"/>
+        <link rel="stylesheet" href="skin/css/bootstrap.min.css" type="text/css">
+        <link rel="stylesheet" href="skin/css/bootstrap-theme.min.css" type="text/css">
+        <link rel="stylesheet" href="skin/css/presentationbootstrap.css" type="text/css">
+
+        <script type="text/javascript" src="skin/js/greensock/TweenMax.min.js"></script>
+        <script type="text/javascript" src="skin/js/jquery-1.11.0.min.js"></script>
+        <script type="text/javascript" src="skin/js/bootstrap.min.js"></script>
+        <script type="text/javascript" src="skin/js/jquery.scrollmagic.min.js"></script>
+        <script type="text/javascript" src="skin/js/jquery.backstretch.min.js"></script>
+        <script type="text/javascript" src="skin/js/jquery.lazy.min.js"></script>
+        <script type="text/javascript" src="skin/js/jquery.mousewheel.js"></script>
+        
+        <link href='http://fonts.googleapis.com/css?family=Engagement|Open+Sans:400italic,400,600,700' rel='stylesheet' type='text/css'>
+        <script type="text/javascript">
+            var windowHeight;
+            var windowWidth;
+            var heightContent;
+            var heightScroller;
+            var heightAdjust = 50;
+            function findBootstrapEnvironment() {
+                var envs = ['xs', 'sm', 'md', 'lg'];
+
+                $el = $('<div>');
+                $el.appendTo($('body'));
+
+                for (var i = envs.length - 1; i >= 0; i--) {
+                    var env = envs[i];
+
+                    $el.addClass('hidden-'+env);
+                    if ($el.is(':hidden')) {
+                        $el.remove();
+                        return env
+                    }
+                };
+            }
+            
+            function changeDeviceClass(){
+               $("body").attr("class","");
+               $("body").addClass(findBootstrapEnvironment()+"-device");
+            }
+            
+            function setHeightAndWidths(){
+                windowHeight = $(window).innerHeight();
+                windowWidth = $(window).innerWidth();
+                heightContent  = (windowHeight/10)*7;
+                heightScroller = (windowHeight/10)*6;
+
+                //adeguo sfondi e pagine
+                 $(".screenblock").css("height",heightContent);
+                 $(".scroller-space").css("height",heightScroller);
+                 $("#block0").css("height",windowHeight);
+                 $(".back-image").css("height",windowHeight);
+                 $(".back-container").css("height", heightScroller + heightContent);
+                 $("#back-container1").css("height", windowHeight);
+                 $(".page1").css("width",windowWidth);
+                 $("#backgrounds").css("width",windowWidth);
+                 //controllo che l'immagine non diventi più corta del blocco
+                 if( windowWidth < 1600 ){
+                     $(".backslide").width("1600px");
+                 }else{
+                     $(".backslide").width("100%");
+                 }
+                 
+                 $('body').scrollspy({ target: '.navbar', offset:(heightContent/2)});
+            }
+            
+            function goToNextBlock(){
+                $(".navbar-collapse .active").next().find("a:not(.dropdown-toggle)").first().click();
+            }
+            
+            function goToPrevBlock(){
+                if($(".navbar-collapse .active").prev().size() > 0){
+                    $(".navbar-collapse .active").prev().find("a:not(.dropdown-toggle)").last().click();
+                }else{
+                    $(".navbar-brand").click();
+                }
+            }
+            
+            function addParallaxBackground(controller, idcont, id, start, finish, scrollduration, startpoint){
+                 controller.addTween('#'+idcont,new TimelineLite()
+                    .append([
+                        TweenMax.fromTo($('#'+id), 1,
+                        {css: {top: start}, immediateRender: true},
+                        {css: {top: finish}})
+                        ]),scrollduration,startpoint );
+            }
+            
+            var scrollingSemaphore = true;
+            function addAutoScroll(){
+                $(document).bind("mousewheel", function(event) {
+                    if(scrollingSemaphore){
+                        scrollingSemaphore = false;
+                        
+                        if(event.deltaY > 0){
+                            goToPrevBlock();
+                        }else{
+                            goToNextBlock();
+                        }
+                        scrollingSemaphore = true;
+                        return false;
+                    }else{
+                        return false;
+                    }
+                });
+                
+                $(document).keydown(function (e) {
+                    e.stopPropagation();
+                    if (e.keyCode === 40) {
+                        e.preventDefault();
+                        goToNextBlock();
+                    } else if (e.keyCode === 38) {
+                        e.preventDefault();
+                        goToPrevBlock();
+                    }
+                    
+                
+                    
+                });
+            }
+            
+            $(document).ready(function() {
+                
+                
+                $("#block0").backstretch("skin/images/sfondi/primaslide.jpg");
+                /*$("#back1").backstretch("skin/images/sfondi/castellopoppi.jpg");
+                $("#back2").backstretch("skin/images/sfondi/trenocasentino.jpg");
+                $("#back3").backstretch("skin/images/sfondi/borgopoppi.jpg");
+                $("#back4").backstretch("skin/images/sfondi/romena.jpg");
+                $("#back5").backstretch("skin/images/sfondi/vistaromena.jpg");
+                $("#back6").backstretch("skin/images/sfondi/funghi.jpg");
+                $("#back7").backstretch("skin/images/sfondi/vallecasentino.jpg");
+                $("#back8").backstretch("skin/images/sfondi/castagna.jpg");
+                $("#back9").backstretch("skin/images/sfondi/lierna.jpg");
+                $("#back10").backstretch("skin/images/sfondi/partina.jpg");
+                $("#back11").backstretch("skin/images/sfondi/pieve_di_romena.jpg");
+                $("#back12").backstretch("skin/images/sfondi/porta.jpg");*/
+                
+                jQuery("img").lazy({
+                    combined: true,
+                    delay: 2000
+                });
+                
+                $('a.godown, .navbar-nav a, .navbar-brand').click(function(){
+                    $('html, body').animate({
+                        scrollTop: $( $.attr(this, 'href') ).offset().top - 180 //parametrizzare
+                    }, 1000);
+                    return false;
+                });
+                
+                changeDeviceClass();
+                setHeightAndWidths();
+                $(window).resize(function() {
+                    changeDeviceClass();
+                    setHeightAndWidths();
+                });
+
+                // This example adds a duration to the tweens so they are synced to the scroll position
+                //var controller = $.superscrollorama();
+                var controller = new ScrollMagic();
+                // amount of scrolling over which the tween takes place (in pixels)
+                var scrollDuration = windowHeight*2;
+                
+                var blockfinish = windowHeight;
+                var blockstart = blockfinish-heightScroller;
+                var blockstartpoint = blockfinish - heightScroller;
+                /*controller.addTween('#back-container1',new TimelineLite()
+                    .append([
+                        TweenMax.fromTo($('#back1'), 1,
+                        {css: {top: blockstart}, immediateRender: true},
+                        {css: {top: blockfinish}})
+                        ]),scrollDuration,blockstartpoint );*/
+                
+                // parallax
+                new ScrollScene({
+                                triggerElement: "#block0",
+                                duration: scrollDuration,
+                                offset: -150
+                        })
+                        .addTo(controller)
+                        .triggerHook("onCenter")
+                        .setTween(new TimelineMax().add([
+                                TweenMax.fromTo("#back1", 1, {top: blockstart}, {top: blockfinish, ease: Linear.easeNone}),
+                        ]));
+			
+               /*
+               blockfinish = heightScroller + heightContent;
+               blockstart = blockfinish-heightScroller;
+               blockstartpoint = blockfinish - windowHeight/2;
+               
+               
+               addParallaxBackground(controller,'back-container2','back2',blockstart,
+                       blockfinish,scrollDuration,blockstartpoint);
+               addParallaxBackground(controller,'back-container3','back3',blockstart,
+                       blockfinish,scrollDuration,blockstartpoint);
+               addParallaxBackground(controller,'back-container4','back4',blockstart,
+                       blockfinish,scrollDuration,blockstartpoint);
+               addParallaxBackground(controller,'back-container5','back5',blockstart,
+                       blockfinish,scrollDuration,blockstartpoint);
+               addParallaxBackground(controller,'back-container6','back6',blockstart,
+                       blockfinish,scrollDuration,blockstartpoint);
+               addParallaxBackground(controller,'back-container7','back7',blockstart,
+                       blockfinish,scrollDuration,blockstartpoint);
+               addParallaxBackground(controller,'back-container8','back8',blockstart,
+                       blockfinish,scrollDuration,blockstartpoint);
+               addParallaxBackground(controller,'back-container9','back9',blockstart,
+                       blockfinish,scrollDuration,blockstartpoint);
+               addParallaxBackground(controller,'back-container10','back10',blockstart,
+                       blockfinish,scrollDuration,blockstartpoint);
+               addParallaxBackground(controller,'back-container11','back11',blockstart,
+                       blockfinish,scrollDuration,blockstartpoint);
+               addParallaxBackground(controller,'back-container12','back12',blockstart,
+                       blockfinish,scrollDuration,blockstartpoint);*/
+              
+              addAutoScroll();
+              
+            });
+
+            function contactForm(){ 
+                $.ajax({
+                    dataType: 'jsonp',
+                    url: "http://getsimpleform.com/messages/ajax?form_api_token=f2504af563c85c515c067b358018165d",
+                    data: {
+                      azienda: $("#azienda").val(),
+                      email: $("#email").val(),
+                      telefono: $("#telefono").val(),
+                      commento: $("#commento").val()
+                    }
+                  }).done(function() {
+                    //callback which can be used to show a thank you message
+                    //and reset the form
+                    alert("Grazie per averci contattato ti risponderemo quanto prima");
+                  });
+            }
+        </script>
+
+    </head>
+    <body>   
+        <div id="backgrounds">
+            <div id="back-container1" class="back-container"><div class="back-image"  id="back1"></div></div>
+            <div id="back-container2" class="back-container"><div class="back-image"  id="back2"></div></div>
+            <div id="back-container3" class="back-container"><div class="back-image"  id="back3"></div></div>
+            <div id="back-container4" class="back-container"><div class="back-image"  id="back4"></div></div>
+            <div id="back-container5" class="back-container"><div class="back-image"  id="back5"></div></div>
+            <div id="back-container6" class="back-container"><div class="back-image"  id="back6"></div></div>
+            <div id="back-container7" class="back-container"><div class="back-image"  id="back7"></div></div>
+            <div id="back-container8" class="back-container"><div class="back-image"  id="back8"></div></div>
+            <div id="back-container9" class="back-container"><div class="back-image"  id="back9"></div></div>
+            <div id="back-container10" class="back-container"><div class="back-image"  id="back10"></div></div>
+            <div id="back-container11" class="back-container"><div class="back-image"  id="back11"></div></div>
+            <div id="back-container12" class="back-container"><div class="back-image"  id="back12"></div></div>
+
+        </div>
+        <div class="navbar navbar-inverse navbar-fixed-top" role="navigation">
+            <div class="container">
+                <div class="navbar-header">
+                    <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+                        <span class="sr-only">Toggle navigation</span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                    </button>
+                    <a class="navbar-brand" href="#block0" >Sun of Tuscany</a>
+                </div>
+                <div class="collapse navbar-collapse">
+                    <ul class="nav navbar-nav">
+                        <li><a href="#block0">Home</a></li>
+                        <li><a href="#block11">Chi siamo</a></li>
+                        <li><a href="#block1">Casentino</a></li>
+                        <li><a href="#block2">Crescita</a></li>
+                        <li><a href="#block3">Ecommerce</a></li>
+                        <li class="dropdown">
+                        <a href="#" class="dropdown-toggle" data-toggle="dropdown">Il progetto <b class="caret"></b></a>
+                            <ul class="dropdown-menu">
+                                <li><a href="#block4">progetto </a></li>
+                                <li><a href="#block5">esperienza</a></li>
+                                <li><a href="#block6">seo</a></li>
+                                <li><a href="#block7">foto</a></li>
+                                <li><a href="#block8">spedizioni</a></li>
+                                <li><a href="#block9">pubblicità</a></li>
+                            </ul>                  
+                        </li>
+                        
+                        <li><a href="#block10">Estero</a></li>
+                        <li><a href="#block12">Contattaci</a></li>
+                    </ul>
+                </div><!--/.nav-collapse -->
+            </div>
+        </div>
+
+        <div id="main" class="main onepage-wrapper">
+            
+            
+            <div id="block0"  class="page1 screenblock container-fluid">
+                <div id="content0">
+                    <!--img  alt="" id="homeimg" class="backslide" src="skin/images/primaslide.jpg" /-->
+                    <div class="h1line col-xs-3 col-sm-offset-2 col-sm-2 col-m-offset-2 col-m-2 col-lg-offset-2 col-lg-2"></div>
+                    <div class="col-xs-6 col-sm-4 col-m-4 col-lg-4"><h1>Sun of Tuscany</h1></div>
+                    <div class="h1line col-xs-3 col-sm-2 col-m-2 col-lg-2"></div>
+                    <div class="col-xs-12 col-sm-12 col-m-12 col-lg-12">
+                        <a  href="#block11" class="godown glyphicon glyphicon-chevron-down img-circle"></a>
+                    </div>
+                </div>
+            </div>
+            <div class="scroller-space"></div>
+            <div id="block11"  class="screenblock">
+                <div class="content-block col-xs-12 col-sm-12 col-m-12">
+                    <div class="col-xs-12 col-sm-12 col-m-12">
+                        <h2>Chi siamo</h2>
+                        <div class="col-xs-12 col-sm-4 col-m-4">
+                            <h3>Filippo Angioli</h3>
+                            <p>Consulente informatico, è da sempre presente nell'organizzazione
+                                di eventi di promozione del Casentino come: Casentino Love Affair,
+                                sapori del Casentino.</p>
+                        </div>
+                        <div class="col-xs-12 col-sm-4 col-m-4">
+                            <h3>Alessandro Pieraccini</h3>
+                            <p>Ecommerce manager, lavora da anni come manager di sistemi di vendita online
+                            sia indipendenti, sia basandosi su sistemi com eBay o Amazon.</p>
+                        </div>
+                        <div class="col-xs-12 col-sm-4 col-m-4">
+                            <h3>Luca Innocenti</h3>
+                            <p>Sviluppatore web, si occupa da 4 anni della creazione e sviluppo di ecommerce
+                                di alto livello, come Monnalisadreams, Miniconf e Computer Discount.</p>
+                        </div>
+
+                    </div>
+                    <div class="col-xs-12 col-sm-12 col-m-12 col-lg-12">
+                        <a  href="#block1" class="godown glyphicon glyphicon-chevron-down img-circle"></a>
+                    </div>
+                </div>
+            </div>
+            <div class="scroller-space"></div>
+            <div id="block1"  class="screenblock">
+                <div class="content-block col-xs-12 col-sm-12 col-m-12">
+                    <div class="col-xs-12 col-sm-5 col-sm-offset-1 col-m-5">
+                        <h2>La nostra vallata</h2>
+                        <p>Il Casentino una valle molto attiva con molte realtà produttive nel settore alimentare di qualità.</p> 
+                    </div>
+                    <div class="hidden-xs col-sm-5 col-m-5  ">
+                        <img class="img-rounded img-responsive" src="skin/images/casentino.jpg">
+                    </div>
+                    <div class="col-xs-12 col-sm-12 col-m-12">
+                        <a  href="#block2" class="godown glyphicon glyphicon-chevron-down img-circle"></a>
+                    </div>
+                </div>
+            </div>
+            <div class="scroller-space"></div>
+            <div id="block2"  class="screenblock">
+                <div class="content-block col-xs-12 col-sm-12 col-m-12">
+                    <div class="col-xs-12 col-sm-5 col-sm-offset-1 col-m-5">
+                        <h2>La poca crescita</h2>
+                        <p>Le scarse e inefficienti infrastrutture penalizzano il commercio 
+                            dei prodotti casentinesi, rendendo difficile l'espansione delle attività.</p> 
+                        
+                    </div>
+                    <div class="col-xs-0 hidden-xs col-sm-5 col-sm-offset-1 col-m-5">
+                        <img style="margin-top:20px;" class="img-rounded img-responsive" src="skin/images/cornucopia.png">
+                    </div>
+                    <div class="col-xs-12 col-sm-12 col-m-12 col-lg-12">
+                        <a  href="#block3" class="godown glyphicon glyphicon-chevron-down img-circle"></a>
+                    </div>
+                </div>
+            </div>
+            <div class="scroller-space"></div>
+            <div id="block3"  class="screenblock">
+                <div class="content-block col-xs-12 col-sm-12 col-m-12">
+                    <div class="col-xs-0 hidden-xs col-sm-5 col-sm-offset-1 col-m-5">
+                        <img style="margin-top:20px;" class="img-rounded img-responsive" src="skin/images/venditeecommerce.jpg">
+                    </div>
+                    <div class="col-xs-12 col-sm-5 col-m-5">
+                        <h2>E' tempo di vendere online</h2>
+                        <p><strong>Il commercio online</strong> è l’unico canale che non risente dei problemi nei collegamenti
+                            ed è un mercato in continua crescita. Le previsioni dicono che il trend di crescita continuerà ancora per anni.</p>
+                    </div>
+                    <div class="col-xs-12 col-sm-12 col-m-12 col-lg-12">
+                        <a  href="#block4" class="godown glyphicon glyphicon-chevron-down img-circle"></a>
+                    </div>
+                </div>
+            </div>            
+            <div class="scroller-space"></div>
+            <div id="block4"  class="screenblock">
+                <div class="content-block col-xs-12 col-sm-12 col-m-12">
+                    <div class="col-xs-12 col-sm-5 col-sm-offset-1 col-m-5 col-lg-5">
+                        <h2>Il progetto</h2>
+                        <p>E' costoso per un' azienda singola creare il proprio canale di vendita online.</p>
+                        <p>Il nostro obiettivo è quello di creare singolo portale collaborativo dove 
+                            tutte le eccellenze casentinesi possano vendere i loro prodotti online, 
+                            diminuendo quindi gli investimenti necessari.</p>
+                        
+                    </div>
+                    <div class="col-xs-0 hidden-xs col-sm-5 col-sm-offset-1 col-m-5">
+                        <img style="margin-top:20px;" class="img-rounded img-responsive" src="skin/images/collaboration.jpg">
+                    </div>
+                    <div class="col-xs-12 col-sm-12 col-m-12">
+                        <a  href="#block5" class="godown glyphicon glyphicon-chevron-down img-circle"></a>
+                    </div>
+                </div>
+            </div>
+            <div class="scroller-space"></div>
+            <div id="block5"  class="screenblock">
+                <div class="content-block col-xs-12 col-sm-12 col-m-12">
+                    <div class="col-xs-12 col-sm-6 col-sm-offset-1 col-m-6">
+                        <h2>Un portale ai massimi livelli</h2>
+                        <p>Frutto di 4 anni di esperienza nel settore del commercio online. 
+                        Dopo aver lavorato per marchi come Monnalisa, Miniconf, Computer Discount</p> 
+                        
+                    </div>
+                    <div class="hidden-xs col-sm-4 col-m-4  ">
+                        <img class="img-rounded img-responsive" src="skin/images/esperienze.jpg">
+                    </div>
+                    <div class="col-xs-12 col-sm-12 col-m-12">
+                        <a  href="#block6" class="godown glyphicon glyphicon-chevron-down img-circle"></a>
+                    </div>
+                </div>
+            </div>
+            <div class="scroller-space"></div>
+            <div id="block6"  class="screenblock">
+                <div class="content-block col-xs-12 col-sm-12 col-m-12">
+                    <div class="col-xs-12 col-sm-6 col-sm-offset-1 col-m-6">
+                        <h2>Facili da trovare su Google</h2>
+                        <p>Ottimizzeremo al meglio l'ecommerce per essere nelle prime posizioni
+                            nei motori di ricerca, portando molte persone a vedere i vostri prodotti.</p>
+                    </div>
+                    <div class="col-xs-0 hidden-xs col-sm-4 col-m-4">
+                        <img style="margin-top:20px;" class="img-rounded img-responsive" src="skin/images/seo.png">
+                    </div>
+                    <div class="col-xs-12 col-sm-12 col-m-12 col-lg-12">
+                        <a  href="#block7" class="godown glyphicon glyphicon-chevron-down img-circle"></a>
+                    </div>
+                </div>
+            </div>
+            <div class="scroller-space"></div>
+            <div id="block7"  class="screenblock">
+                <div class="content-block col-xs-12 col-sm-12 col-m-12">
+                    <div class="col-xs-0 hidden-xs col-sm-5 col-sm-offset-1 col-m-5">
+                        <img style="margin-top:20px;" class="img-rounded img-responsive" src="skin/images/foto.jpg">
+                    </div>
+                    <div class="col-xs-12 col-sm-5 col-m-5">
+                        <h2>Fotografie efficaci per i vostri prodotti</h2>
+                        <p>Le fotografie sono fondamentali per vendere online e noi vi provvederemo l'idea e gli strumenti per farlo.</p>
+                    </div>
+                    <div class="col-xs-12 col-sm-12 col-m-12 col-lg-12">
+                        <a  href="#block8" class="godown glyphicon glyphicon-chevron-down img-circle"></a>
+                    </div>
+                </div>
+            </div>
+            <div class="scroller-space"></div>
+            <div id="block8"  class="screenblock">
+                <div class="content-block col-xs-12 col-sm-12 col-m-12">
+                    <div class="col-xs-12 col-sm-6  col-sm-offset-1  col-m-6">
+                        <h2>Tariffe di spedizione agevolate</h2>
+                        <p>Sappiamo come e con chi spedire per ottenere il 
+                            miglior rapporto qualità/prezzo.</p>
+                        
+                        
+                    </div>
+                    <div class="col-xs-0 hidden-xs col-sm-4 col-m-4">
+                        <img style="margin-top:20px;" class="img-rounded img-responsive" src="skin/images/spedizionifacili.jpg">
+                    </div>
+                    <div class="col-xs-12 col-sm-12 col-m-12 col-lg-12">
+                        <a  href="#block9" class="godown glyphicon glyphicon-chevron-down img-circle"></a>
+                    </div>
+                </div>
+            </div>
+            <div class="scroller-space"></div>
+            <div id="block9"  class="screenblock">
+                <div class="content-block col-xs-12 col-sm-12 col-m-12">
+                    <div class="col-xs-0 hidden-xs col-sm-5 col-sm-offset-1 col-m-5">
+                        <img style="margin-top:20px;" class="img-rounded img-responsive" src="skin/images/googleAdwordsImg.jpg">
+                    </div>
+                    <div class="col-xs-12 col-sm-5 col-m-5">
+                        <h2>Pubblicizziamo online i vostri prodotti</h2>
+                        <p>Gestiremo la pubblicità dei vostri prodotti sul web in modo da portare i clienti che cercate 
+                            alla vostra soglia.</p>
+                       
+                    </div>
+                    <div class="col-xs-12 col-sm-12 col-m-12 col-lg-12">
+                        <a  href="#block10" class="godown glyphicon glyphicon-chevron-down img-circle"></a>
+                    </div>
+                </div>
+            </div>
+            <div class="scroller-space"></div>
+            <div id="block10"  class="screenblock">
+                <div class="content-block col-xs-12 col-sm-12 col-m-12">
+                    <div class="col-xs-0 hidden-xs col-sm-5 col-sm-offset-1 col-m-5">
+                        <img style="margin-top:20px;" class="img-rounded img-responsive" src="skin/images/italia-europa-cina.jpg">
+                    </div>
+                    <div class="col-xs-12 col-sm-5 col-m-5">
+                        <h2>Prima in Italia poi Europa poi Cina</h2>
+                        <p>Abbiamo grandi obiettivi, vorremmo uscire durante l'estate in Italia, per poi aprirci ai mercati esteri più attrattivi, 
+                            l' Europa e soprattutto la Cina, dove i prodotti italiani hanno molta richiesta.</p>
+                        
+                    </div>
+                    <div class="col-xs-12 col-sm-12 col-m-12 col-lg-12">
+                        <a  href="#block12" class="godown glyphicon glyphicon-chevron-down img-circle"></a>
+                    </div>
+                </div>
+            </div>
+            <div class="scroller-space"></div>
+            <div id="block12"  class="screenblock">
+                <div class="content-block col-xs-12 col-sm-12 col-m-12">
+                    <div class="col-xs-12 col-sm-12 col-m-12">
+                        <h2 style="text-align: center;">Vuoi partecipare? Contattaci!! </h2>
+                        <div class="col-xs-10 col-xs-offset-1 col-sm-offset-3 col-sm-6 col-m-6">
+                            <p>sei interessato al progetto, vuoi vendere sul nostro portale, vuoi lavorare insieme
+                            a noi o semplicemente prendere un caffè, compila questo form e ti risponderemo al più presto:</p>
+                        </div>
+                        
+                            
+                        <div id='contactus' class="col-xs-10 col-xs-offset-1 col-sm-offset-4 col-sm-4 col-m-4">
+                            
+                            <div class="input-group input-group-m">
+                              <span class="input-group-addon">Nome azienda:</span>
+                              <input type="text" class="form-control" id='azienda' name='azienda' placeholder="Nome azienda">
+                            </div>
+                            <div class="input-group input-group-m">
+                              <span class="input-group-addon">Email:</span>
+                              <input type="text" class="form-control" id='email' name='email' placeholder="Email">
+                            </div>
+                            <div class="input-group input-group-m">
+                              <span class="input-group-addon">Telefono:</span>
+                              <input type="text" class="form-control" id="telefono" name='telefono' placeholder="Telefono">
+                            </div>
+                            <textarea class="form-control input-group" rows="3" id="commento" placeholder="Commento"></textarea>
+                            <button type="button" class="btn btn-lg btn-success pull-right" onclick="contactForm();">
+                                Invia 
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </body>
+</html>
